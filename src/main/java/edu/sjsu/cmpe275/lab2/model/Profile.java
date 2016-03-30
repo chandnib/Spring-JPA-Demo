@@ -3,6 +3,7 @@ package edu.sjsu.cmpe275.lab2.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,8 +12,15 @@ import javax.persistence.Table;
 public class Profile
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
+	@Override
+	public String toString()
+	{
+		return "Profile [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
+				+ ", address=" + address + ", organization=" + organization + ", aboutMyself=" + aboutMyself + "]";
+	}
+
 	@Column(name = "first_name")
 	private String firstname;
 	@Column(name = "last_name")
